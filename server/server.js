@@ -2,8 +2,8 @@
  * Use socket.io for sending tweets to client. 
  */
 
-console.log(process.env.WEBSOCKET_PORT)
-const io = require('socket.io')(process.env.WEBSOCKET_PORT);
+console.log(process.env.PORT)
+const io = require('socket.io')(process.env.PORT);
 
 /*
  * Fetch API keys and initialize twitter client.
