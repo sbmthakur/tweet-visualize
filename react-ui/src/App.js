@@ -29,7 +29,7 @@ class App extends Component {
  constructor(props) {
     super(props);
     console.log('wsss', process.env.REACT_APP_WEBSOCKET_PORT) 
-    let socket = io.connect('ws://localhost:' + process.env.REACT_APP_WEBSOCKET_PORT);
+    let socket = io.connect('ws://morning-ridge-89471.herokuapp:' + process.env.REACT_APP_WEBSOCKET_PORT);
     this.state = {
         socket: socket,
         termFrequencies: {},
