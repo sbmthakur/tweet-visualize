@@ -28,6 +28,10 @@ class App extends Component {
 
  constructor(props) {
    super(props);
+
+   /*
+    * Connect to the HTTP server
+    */
    let socket = io.connect('http://morning-ridge-89471.herokuapp.com');
    this.state = {
         socket: socket,
