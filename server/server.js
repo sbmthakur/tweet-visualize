@@ -11,7 +11,7 @@ const io = require('socket.io')(server);
 const path = require('path');
 
 //const app = express();
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.PORT;
 
 /*
  * Fetch API keys and initialize twitter client.
