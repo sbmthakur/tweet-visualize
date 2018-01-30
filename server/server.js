@@ -2,13 +2,15 @@
  * Use socket.io for sending tweets to client. 
  */
 
-console.log(process.env.PORT, process.env.WEBSOCKET_PORT)
-const io = require('socket.io')(process.env.WEBSOCKET_PORT);
-
+//console.log(process.env.PORT, process.env.WEBSOCKET_PORT)
 const express = require('express');
+const app = express();
+const server = require('http').Server(app)
+const io = require('socket.io')(server);
+
 const path = require('path');
 
-const app = express();
+//const app = express();
 const PORT = process.env.PORT || 5000;
 
 /*
@@ -39,21 +41,17 @@ twitterClient.stream('statuses/filter', {
   });
 });
 
-
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-// Answer API requests.
-app.get('/api', function (req, res) {
-  res.set('Content-Type', 'application/json');
-  res.send('{"message":"Hello from the custom server!"}');
-});
-
+/*
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
+  response.setHeader('Access-Control-Allow-Origin','*')
   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
+*/
 
-app.listen(PORT, function () {
+server.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
 });
